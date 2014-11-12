@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document</title>
+	<script src='./jquery-2.1.0.min.js'></script>
+    <script src='./js/bootstrap.min.js'></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+    <style>
+		@media (max-width: 800 px){
+			.container{
+				width: 500 px;
+			}
+		}
+	
+    </style>
+    <script>
+    	//$(document).off('.data-api')
+    	$(document).ready(function(){
+    		$('#myModal').on('show.bs.modal', function (e) {
+    			console.log(e);
+    		});	
+    		//$('.dropdown-menu').dropdown('toggle');
+    		$('#Mydropdown').on('shown.bs.dropdown', function () {
+					console.log('dropdown');  // do something…
+			});
+    		//$('.dropdown-menu').dropdown('toggle');
+			$('#myTab li:eq(2) a').tab('show');
+
+			$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+			  console.log(e.target); // activated tab
+			  console.log(e.relatedTarget); // previous tab
+			});
+
+			$('#mytooltip').tooltip();
+
+			$('#mypopover').popover();
+			//$('#error').alert('close');
+
+			 $('#myButton').on('click', function () {
+		  		console.log(this);
+		    	var $btn = $(this).button('loading');
+		    	
+      			 
+		    // business logic...
+		    	$btn.button('reset');
+		  	});
+
+			 //$('#collapseTwo').collapse('show');
+			 $('#carousel-example-generic').carousel({
+			 	interval:false
+			 });
+    	});
+    	
+
+    </script>
+</head>
+
+<body>
+
+	<div class='container'>
+		<h1>hello</h1>
+		<p>hsdf <abbr title='attribute' class="initialism"> ksfj </abbr> </p>
+		<p class='lead'>fsfhkh</p>
+		For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+		To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
+		<form class="form-horizontal" role='form'>
+			
+			<div class="form-group has-error has-feedback">
+			  <label class="control-label" for="inputError2">Input with error</label>
+			  <input type="text" class="form-control" id="inputError2">
+			  <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+			</div>
+			
+		</form>
+
+		<textarea name="example" id="textarea" cols="300" rows="10" disabled></textarea>
+		
+		<div class='radio'>
+			<label class='radio-inline' for="email">
+				<input type="radio" value='' disabled>
+				hello
+			</label>
+			
+			<label class='radio-inline' for="email">
+				<input type='radio' type="radio" value='' disabled>
+				world
+			</label>
+			
+			
+		</div>
+		<div class="row">
+		  <div class="col-xs-2">
+		    <input type="text" class="form-control" placeholder=".col-xs-2">
+		  </div>
+		  <div class="col-xs-3">
+		    <input type="text" class="form-control" placeholder=".col-xs-3">
+		  </div>
+		  <div class="col-xs-4">
+		    <input type="text" class="form-control" placeholder=".col-xs-4">
+		  </div>
+		</div>
+		<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+		
+		<button type='button' class='btn btn-primary btn-lg active' disabled >primary</button>
+		<button type='button' class='btn btn-default btn-block' >default</button>
+
+
+
+		<img src="" alt="test" class='img-circle'>
+		
+		<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?" id='mypopover'>Click to toggle popover</button>
+
+
+		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+		  Launch demo modal
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+		      </div>
+		      <div class="modal-body">
+		        hello
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="dropdown" id='Mydropdown'>
+		  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Dropdown trigger
+		   <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		    	<li role='presentation'>
+		    		<a role='menuitem' href="">hello</a>
+		    	</li>
+		    	<li>world</li>
+		  </ul>
+		</div>
+		<div  >
+			you got an error!
+			<button  id='error'  type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		</div>
+		
+		<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+		  Loading state
+		</button>
+
+
+
+
+		<ul class="nav nav-tabs" role="tablist" id='myTab'>
+		  <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
+		  <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+		  <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
+		  <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+		  <div class="tab-pane active" id="home">home</div>
+		  <div class="tab-pane" id="profile">profile</div>
+		  <div class="tab-pane" id="messages">messages</div>
+		  <div class="tab-pane" id="settings">settings</div>
+		</div>
+
+
+		<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left !" id='mytooltip'>Tooltip on left</button>
+
+
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		          Collapsible Group Item #1
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel">
+		      <div class="panel-body">
+		        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+		      </div>
+		    </div>
+		  </div>
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+		          Collapsible Group Item #2
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel">
+		      <div class="panel-body">
+		        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+		      </div>
+		    </div>
+		  </div>
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+		          Collapsible Group Item #3
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel">
+		      <div class="panel-body">
+		        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+
+
+
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
+		  <!-- Indicators -->
+		  <ol class="carousel-indicators">
+		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		  </ol>
+
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+		    <div class="item active">
+		      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzc3NyI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQ1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojNTU1O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjU2cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+Rmlyc3Qgc2xpZGU8L3RleHQ+PC9zdmc+" alt="...">
+		      <div class="carousel-caption">
+		        <p>this is test</p>
+		      </div>
+		    </div>
+		    <div class="item">
+		      <img src="..." alt="...">
+		      <div class="carousel-caption">
+		        ...
+		      </div>
+		    </div>
+		    ...
+		  </div>
+
+		  <!-- Controls -->
+		  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
+		</div>
+
+
+
+		<div data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+  			预览
+		</div>
+		
+
+
+		<button type="button" class="btn btn-default btn-lg">
+		  <span class="glyphicon glyphicon-star"></span> Star
+		</button>
+		
+
+
+		<div class="dropdown">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+		    Dropdown
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		  	<li role='presentation' class='dropdown-header'>header</li>
+		    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+		    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+		    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+		    <li role="presentation" class="divider"></li>
+		    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+		  </ul>
+		</div>
+		
+		<div class="btn-group-vertical">
+		  <button type="button" class="btn btn-default">Left</button>
+		  <button type="button" class="btn btn-default">Middle</button>
+		  <button type="button" class="btn btn-default">Right</button>
+		</div>
+		
+		<ul class="pagination">
+		  <li><a href="#">&laquo;</a></li>
+		  <li><a href="#">1</a></li>
+		  <li><a href="#">2</a></li>
+		  <li><a href="#">3</a></li>
+		  <li><a href="#">4</a></li>
+		  <li><a href="#">5</a></li>
+		  <li><a href="#">&raquo;</a></li>
+		</ul>
+
+		<div class="row">
+		  <div class="col-xs-6 col-md-3">
+		    <a href="#" class="thumbnail">
+		      <img data-src="holder.js/100%x180" alt="...">
+		    </a>
+		  </div>
+		  ...
+		</div>
+
+
+		<div class="progress">
+		  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%; ">
+		    60
+		  </div>
+		</div>
+				
+		<div class="media">
+		  <a class="pull-left" href="#">
+		    <img class="media-object" src="..." alt="...">
+		  </a>
+		  <div class="media-body">
+		    <h4 class="media-heading">Media heading</h4>
+		    ...
+		  </div>
+		</div>
+
+		<ul class="list-group">
+		  <li class="list-group-item">
+		  	Cras justo odio
+		  	<span class='badge'>14</span>
+		  </li>
+		  <li class="list-group-item">Dapibus ac facilisis in</li>
+		  <li class="list-group-item">Morbi leo risus</li>
+		  <li class="list-group-item">Porta ac consectetur ac</li>
+		  <li class="list-group-item">Vestibulum at eros</li>
+		</ul>
+
+		<div class="well">hello world</div>
+
+		<div class="embed-responsive embed-responsive-16by9">
+  			<iframe class="embed-responsive-item" src="…"></iframe>
+		</div>
+		<select name="" id="" multiple class='form-control'>
+			<option value="name">name</option>
+			<option value="age">age</option>
+		</select>
+		<table class="table table-bordered table-hover table-condensed">
+		 	<tr class='success'>
+		 		<th class='warning'>sdf</th>
+		 		<th>sdf</th>
+		 	</tr>
+		 	<tr>
+		 		<th>sdfsgsg</th>
+		 		<th>sfsdfs</th>
+		 	</tr>
+		</table>
+		<div class='row'>
+			<div class='col-lg-1'>
+				.col-md-1
+			</div>
+			<div class='col-lg-2'>
+				2
+			</div>
+			<div class='col-lg-4 col-lg-offset-4'>
+				4
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-md-8'>
+				8
+			</div>
+			<div class='col-md-4'>
+				<div class='col-md-6' style='background-color:red'>
+					<dl class="dl-horizontal">
+						<dt>description</dt>
+						<dt>hello</dt>
+					</dl>
+					sdfs
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
